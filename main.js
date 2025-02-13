@@ -33,30 +33,32 @@ function addBookToLibrary(title, author, noOfPages, hasRead) {
 	myLibrary.push(book);
 }
 
+function createElement(elementName, className, textContent) {
+	const createdElement = document.createElement(elementName);
+	className && createdElement.classList.add(className);
+	textContent && (createdElement.textContent = textContent);
+
+	return createdElement;
+}
+
 function displayBooks() {
 	if(myLibrary?.length) {
 		const libraryContainer = document.querySelector(".library");
 		
 		myLibrary.forEach((book) => {
-			const bookTitle = document.createElement("p");
-			bookTitle.classList.add("title");
-			bookTitle.textContent = book.title;
+			const bookTitle = createElement("p", "title", book.title);
 			
-			const bookAuthor = document.createElement("p");
-			bookAuthor.classList.add("author");
-			bookAuthor.textContent = book.author;
+			const bookAuthor = createElement("p", "author", book.author);
 			
-			const bookPageCount = document.createElement("p");
-			bookPageCount.classList.add("page-count");
-			bookPageCount.textContent = book.noOfPages;
+			const bookPageCount = createElement("p", "page-count", `${book.noOfPages} pages`);
 			
-			const bookReadStatus = document.createElement("p");
-			bookReadStatus.classList.add("read-status");
-			bookReadStatus.textContent = book.hasRead;
+			const bookReadStatus = createElement("p", "read-status", book.hasRead ? "Read" : "Not Read");
+
+			const bookCardDetailsContainer = createElement("div", "card-details");
+			bookCardDetailsContainer.append(bookTitle, bookAuthor, bookPageCount, bookReadStatus);
 			
-			const bookCard = document.createElement("div");
-			bookCard.classList.add("card");
-			bookCard.append(bookTitle, bookAuthor, bookPageCount, bookReadStatus);
+			const bookCard = createElement("div", "card");
+			bookCard.append(bookCardDetailsContainer);
 			
 			libraryContainer.appendChild(bookCard);
 		});
