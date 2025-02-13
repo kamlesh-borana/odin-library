@@ -3,3 +3,45 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    background-color: aliceblue;
+}
+
+h1 {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.library {
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.library .card {
+    background-color: white;
+    border: 1px solid darkgray;
+    border-radius: 12px;
+    padding: 12px;
+    /* text-align: center; */
+}
+
+.library .card .card-details {
+}
+
+.library .card .title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.library .card .author {
+    margin-top: 3px;
+    color: rgb(99, 97, 97);
+}
+
+.library .card .page-count,
+.library .card .read-status {
+    margin-top: 10px;
+}
