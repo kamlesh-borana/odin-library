@@ -1,4 +1,17 @@
-const myLibrary = [];
+const myLibrary = [
+	{
+		title: "Book1",
+		author: "Author1",
+		noOfPages: 123,
+		hasRead: false,
+	},
+	{
+		title: "Book2",
+		author: "Author3",
+		noOfPages: 321,
+		hasRead: true,
+	}
+];
 
 function Book(title, author, noOfPages, hasRead) {
 
@@ -19,3 +32,35 @@ function addBookToLibrary(title, author, noOfPages, hasRead) {
 	
 	myLibrary.push(book);
 }
+
+function displayBooks() {
+	if(myLibrary?.length) {
+		const libraryContainer = document.querySelector(".library");
+		
+		myLibrary.forEach((book) => {
+			const bookTitle = document.createElement("p");
+			bookTitle.classList.add("title");
+			bookTitle.textContent = book.title;
+			
+			const bookAuthor = document.createElement("p");
+			bookAuthor.classList.add("author");
+			bookAuthor.textContent = book.author;
+			
+			const bookPageCount = document.createElement("p");
+			bookPageCount.classList.add("page-count");
+			bookPageCount.textContent = book.noOfPages;
+			
+			const bookReadStatus = document.createElement("p");
+			bookReadStatus.classList.add("read-status");
+			bookReadStatus.textContent = book.hasRead;
+			
+			const bookCard = document.createElement("div");
+			bookCard.classList.add("card");
+			bookCard.append(bookTitle, bookAuthor, bookPageCount, bookReadStatus);
+			
+			libraryContainer.appendChild(bookCard);
+		});
+	}
+}
+
+displayBooks();
