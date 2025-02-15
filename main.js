@@ -66,3 +66,15 @@ function displayBooks() {
 }
 
 displayBooks();
+
+const addNewBookDialog = document.querySelector("#add-new-book-dialog");
+const addNewBookButton = document.querySelector(".header button");
+const closeAddNewBookDialogButton = document.querySelector(".cancel");
+
+addNewBookButton.addEventListener("click", () => {
+	addNewBookDialog.showModal();
+});
+
+closeAddNewBookDialogButton.addEventListener("click", () => {
+	addNewBookDialog.close();
+});
