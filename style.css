@@ -52,8 +52,18 @@ body {
 }
 
 .library .card .page-count,
-.library .card .read-status {
+.library .card .read-status,
+.library .card .cta-container {
     margin-top: 10px;
+}
+
+.library .card .cta-container .remove {
+    padding: 3px 9px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: rgba(255, 0, 0, 0.829);
+    color: white;
 }
 
 dialog {
