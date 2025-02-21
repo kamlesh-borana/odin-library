@@ -44,6 +44,9 @@ function createElement(elementName, className, textContent) {
 function displayBooks() {
 	if(myLibrary?.length) {
 		const libraryContainer = document.querySelector(".library");
+
+		// Clear existing content
+		libraryContainer.innerHTML = "";
 		
 		myLibrary.forEach((book) => {
 			const bookTitle = createElement("p", "title", book.title);
@@ -69,7 +72,9 @@ displayBooks();
 
 const addNewBookDialog = document.querySelector("#add-new-book-dialog");
 const addNewBookButton = document.querySelector(".header button");
+const addNewBookForm = document.querySelector("#add-new-book-dialog form");
 const closeAddNewBookDialogButton = document.querySelector(".cancel");
+const submitAddNewBookDialogButton = document.querySelector(".submit");
 
 addNewBookButton.addEventListener("click", () => {
 	addNewBookDialog.showModal();
@@ -78,5 +83,20 @@ addNewBookButton.addEventListener("click", () => {
 // Listen for submit type button's click to prevent form submission and close modal
 closeAddNewBookDialogButton.addEventListener("click", (event) => {
 	event.preventDefault();
+	addNewBookDialog.close();
+});
+
+addNewBookForm.addEventListener("submit", (event) => {
+	event.preventDefault();
+	
+	const formData = new FormData(event.target);
+	const title = formData.get("title");
+	const author = formData.get("author");
+	const noOfPages = formData.get("no-of-pages");
+	const hasRead = formData.get("read-status") === "on"; // Check if the read-status checkbox is checked
+
+	addBookToLibrary(title, author, noOfPages, hasRead);
+	displayBooks();
+
 	addNewBookDialog.close();
 });
