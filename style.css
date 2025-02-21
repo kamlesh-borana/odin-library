@@ -57,12 +57,26 @@ body {
     margin-top: 10px;
 }
 
-.library .card .cta-container .remove {
+.library .card .cta-container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: space-between;
+}
+
+.library .card .cta-container button {
     padding: 3px 9px;
     font-size: 16px;
     border: none;
     border-radius: 6px;
+}
+
+.library .card .cta-container .remove {
     background-color: rgba(255, 0, 0, 0.829);
+    color: white;
+}
+
+.library .card .cta-container .toggle {
+    background-color: rgb(50, 144, 231);
     color: white;
 }
 

@@ -70,8 +70,10 @@ function displayBooks() {
 				displayBooks();
 			});
 
+			const toggleReadButton = createElement("button", "toggle", "Toggle Read");
+
 			const cardCTAContainer = createElement("div", "cta-container");
-			cardCTAContainer.append(removeButton);
+			cardCTAContainer.append(toggleReadButton, removeButton);
 			
 			const bookCard = createElement("div", "card");
 			bookCard.id = book.id;
