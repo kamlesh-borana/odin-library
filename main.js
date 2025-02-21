@@ -1,11 +1,13 @@
 const myLibrary = [
 	{
+		id: 1,
 		title: "Book1",
 		author: "Author1",
 		noOfPages: 123,
 		hasRead: false,
 	},
 	{
+		id: 2,
 		title: "Book2",
 		author: "Author3",
 		noOfPages: 321,
@@ -20,6 +22,7 @@ function Book(title, author, noOfPages, hasRead) {
 		throw Error("Must use the new operator to call the function");
 	}
 
+	this.id = Date.now();
 	this.title = title;
 	this.author = author;
 	this.noOfPages = noOfPages;
@@ -59,9 +62,20 @@ function displayBooks() {
 
 			const bookCardDetailsContainer = createElement("div", "card-details");
 			bookCardDetailsContainer.append(bookTitle, bookAuthor, bookPageCount, bookReadStatus);
+
+			const removeButton = createElement("button", "remove", "Remove");
+			removeButton.addEventListener("click", () => {
+				const foundBookIndex = myLibrary.findIndex((book) => book.id === bookCard.id );
+				myLibrary.splice(foundBookIndex, 1);
+				displayBooks();
+			});
+
+			const cardCTAContainer = createElement("div", "cta-container");
+			cardCTAContainer.append(removeButton);
 			
 			const bookCard = createElement("div", "card");
-			bookCard.append(bookCardDetailsContainer);
+			bookCard.id = book.id;
+			bookCard.append(bookCardDetailsContainer, cardCTAContainer);
 			
 			libraryContainer.appendChild(bookCard);
 		});
