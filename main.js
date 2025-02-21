@@ -75,6 +75,8 @@ addNewBookButton.addEventListener("click", () => {
 	addNewBookDialog.showModal();
 });
 
-closeAddNewBookDialogButton.addEventListener("click", () => {
+// Listen for submit type button's click to prevent form submission and close modal
+closeAddNewBookDialogButton.addEventListener("click", (event) => {
+	event.preventDefault();
 	addNewBookDialog.close();
 });
