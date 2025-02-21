@@ -1,19 +1,7 @@
-const myLibrary = [
-	{
-		id: 1,
-		title: "Book1",
-		author: "Author1",
-		noOfPages: 123,
-		hasRead: false,
-	},
-	{
-		id: 2,
-		title: "Book2",
-		author: "Author3",
-		noOfPages: 321,
-		hasRead: true,
-	}
-];
+const dummyBook1 = new Book("Book1", "Author1", 123, false);
+const dummyBook2 = new Book("Book2", "Author2", 321, true);
+
+const myLibrary = [dummyBook1, dummyBook2];
 
 function Book(title, author, noOfPages, hasRead) {
 
@@ -27,6 +15,10 @@ function Book(title, author, noOfPages, hasRead) {
 	this.author = author;
 	this.noOfPages = noOfPages;
 	this.hasRead = hasRead;
+}
+
+Book.prototype.toggleReadStatus = function() {
+	this.hasRead = !this.hasRead;
 }
 
 function addBookToLibrary(title, author, noOfPages, hasRead) {
@@ -71,6 +63,10 @@ function displayBooks() {
 			});
 
 			const toggleReadButton = createElement("button", "toggle", "Toggle Read");
+			toggleReadButton.addEventListener("click", () => {
+				book.toggleReadStatus();
+				displayBooks();
+			});
 
 			const cardCTAContainer = createElement("div", "cta-container");
 			cardCTAContainer.append(toggleReadButton, removeButton);
