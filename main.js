@@ -110,5 +110,7 @@ addNewBookForm.addEventListener("submit", (event) => {
 	addBookToLibrary(title, author, noOfPages, hasRead);
 	displayBooks();
 
+	addNewBookForm.reset();
+
 	addNewBookDialog.close();
 });
